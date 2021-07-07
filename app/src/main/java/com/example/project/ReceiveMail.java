@@ -1,5 +1,7 @@
 package com.example.project;
 
+import android.util.Log;
+
 import com.sun.mail.pop3.POP3Store;
 
 import java.io.IOException;
@@ -10,17 +12,18 @@ import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.NoSuchProviderException;
 import javax.mail.Session;
+import javax.mail.Store;
 
 public class ReceiveMail {
 
-    public static void receiveEmail(String pop3Host, String storeType, String user, String password) {
+    public static void receiveEmail(String host, String storeType, String user, String password) {
         try {
             //1) get the session object
             Properties properties = new Properties();
             properties.put("mail.pop3.host", host);
             properties.put("mail.pop3.port", "995");
             properties.put("mail.pop3.starttls.enable", "true");
-            Session emailSession = Session.getDefaultInstance(properties);
+            Session session = Session.getDefaultInstance(properties);
 
             //2) create the POP3 store object and connect with the pop server
             Store store = session.getStore("pop3s");
@@ -31,7 +34,7 @@ public class ReceiveMail {
             folder.open(Folder.READ_ONLY);
 
             //4) retrieve the messages from the folder in an array and print it
-            Message[] messages = emailFolder.getMessages();
+            Message[] messages = folder.getMessages();
             for (int i = 0; i < messages.length; i++) {
                 Message message = messages[i];
                 Log.i("MainActivity", "------------------------------------");

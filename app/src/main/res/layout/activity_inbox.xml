@@ -12,7 +12,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/et_to"
+        android:id="@+id/et_from"
         android:hint="From"
         android:padding="12dp"
         android:background="@drawable/bg_round"/>
