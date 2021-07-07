@@ -130,23 +130,4 @@ public class Inbox extends AppCompatActivity implements View.OnTouchListener, Ge
         });
 
     }
-
-
-    @Override
-    protected void onPause() {
-        TTS.stop();
-        super.onPause();
-    }
-
-    @Override
-    protected void onStop() {
-        TTS.stop();
-        super.onStop();
-    }
-
-    @Override
-    protected void onDestroy() {
-        TTS.stop();
-        super.onDestroy();
-    }
 }
